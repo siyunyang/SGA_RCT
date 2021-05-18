@@ -55,17 +55,17 @@ plot(p,varlist = c("X1","X2","X7"),base = T)
 
 # ATE - glm with IPW
 
-p <- SumStat_sub(ps.formula = ps.form2, subgroup = subgroup, data=data, weight=c("IPW"))
+p <- SumStat_sub(ps.formula = ps.form_m, subgroup = subgroup, data=data, weight=c("IPW"))
 p
 plot(p)
 
 # ATT - glm with ATT weights
-p <- SumStat_sub(ps.formula = ps.form2, subgroup = subgroup, data=data, weight=c("treated"))
+p <- SumStat_sub(ps.formula = ps.form_m, subgroup = subgroup, data=data, weight=c("treated"))
 p
 plot(p)
 
 # ATEN - glm with entropy weights
-p <- SumStat_sub(ps.formula = ps.form2, subgroup = subgroup, data=data, weight="entropy", trtgrp = 0)
+p <- SumStat_sub(ps.formula = ps.form_m, subgroup = subgroup, data=data, weight="entropy", trtgrp = 0)
 p
 plot(p)
 
