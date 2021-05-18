@@ -35,7 +35,7 @@ covM<-as.data.frame(model.matrix(formula(ps.form_m),data))[,-1]
 
 ### example call - main effect glm with OW
 # R option specified the number of bootstrap sample for SE calculation
-p1<-PSweight_sub(ps.formula=ps.form,subgroup=subgroup,yname="Y",data=data,R=50,weight="overlap")
+p1<-PSweight_sub(ps.formula=ps.form_m,subgroup=subgroup,yname="Y",data=data,R=50,weight="overlap")
 
 # can specify arbitary contrast statement
 summary(p1,contrast = rbind(c(1,-1),c(0.5,-1)))
@@ -44,17 +44,17 @@ summary(p1,het = T)
 
 
 # ATE - glm with IPW
-p2 <- PSweight_sub(ps.formula=ps.form,subgroup=subgroup,yname="Y",data=data,R=50,weight="IPW")
+p2 <- PSweight_sub(ps.formula=ps.form_m,subgroup=subgroup,yname="Y",data=data,R=50,weight="IPW")
 p2
 summary(p2,contrast = rbind(c(1,-1),c(0.5,-1)))
 
 ### ATT
-p3 <- PSweight_sub(ps.formula=ps.form,subgroup=subgroup,yname="Y",trtgrp=0,data=data,R=50,weight="treated")
+p3 <- PSweight_sub(ps.formula=ps.form_m,subgroup=subgroup,yname="Y",trtgrp=0,data=data,R=50,weight="treated")
 p3
 summary(p3)
 
 #entropy is also available
-p4 <- PSweight_sub(ps.formula=ps.form,subgroup=subgroup,yname="Y",data=data,R=50,weight="entropy")
+p4 <- PSweight_sub(ps.formula=ps.form_m,subgroup=subgroup,yname="Y",data=data,R=50,weight="entropy")
 p4
 summary(p4)
 
